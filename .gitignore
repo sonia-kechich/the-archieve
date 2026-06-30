@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+test/node_modules/
+
+# vendored Arduino toolchain downloads/caches (regenerate with arduino-cli)
+tools/ard-data/
+tools/ard-dl/
+tools/arduino-cli.zip
+
+# stray binaries / lock files (not part of the project)
+AnyDesk*.exe
+*.conf.lock
+
+# OS / editor junk
+Thumbs.db
+.DS_Store

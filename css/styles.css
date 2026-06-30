@@ -1,0 +1,1179 @@
+    /* ---- self-hosted fonts (latin subset) so the UI renders offline / in an APK build,
+       with no render-blocking @import. Font files live in css/fonts/. ---- */
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/inter-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/inter-500.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/jetbrainsmono-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/jetbrainsmono-500.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/jetbrainsmono-700.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Space Grotesk';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/spacegrotesk-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Space Grotesk';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/spacegrotesk-500.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Space Grotesk';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/spacegrotesk-700.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* =================================================================
+   NOMAD OS — WORLD SHELL
+   This file is built as a TEMPLATE. To spin up a new STEM sector
+   (Programming, AI, Astronomy, Cybersecurity, Linux...), clone this
+   file and edit ONLY the WORLD config block in the script + the
+   --accent / --accent-2 theme vars below. Everything else is the shell.
+   ================================================================= */
+
+    :root {
+      /* ---- OS shell (constant across every sector) ---- */
+      --void: #060A0F;
+      --panel: #0B1219;
+      --panel-2: #0C151D;
+      --hairline: rgba(150, 170, 185, .10);
+      --hairline-hot: rgba(180, 200, 215, .22);
+      --ink: #CBD6DE;
+      --ink-dim: #6B7B86;
+      --ink-faint: #5E6C76;
+      /* lifted from #3C4750: ~2.1:1 -> ~3.7:1 on --void for the small mono meta-labels */
+      --danger: #FF5A4D;
+      --ok: #5BE8B5;
+
+      /* ---- SECTOR ACCENT (change these per world) ---- */
+      --accent: #3FE0D0;
+      /* signal / current — electric cyan   */
+      --accent-2: #E0A24A;
+      /* matter / power   — copper          */
+      --accent-glow: rgba(63, 224, 208, .45);
+      --copper-glow: rgba(224, 162, 74, .40);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      background: var(--void);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow: hidden;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* faint blueprint grid + vignette over the whole deck */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(120, 150, 165, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 150, 165, .025) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(120% 100% at 50% -10%, transparent 55%, rgba(0, 0, 0, .65) 100%);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace
+    }
+
+    .disp {
+      font-family: 'Space Grotesk', sans-serif
+    }
+
+    /* ============================ BOOT / JACK-IN ============================ */
+    #boot {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #04070A;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      transition: opacity .8s ease;
+    }
+
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      background: #000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .6s ease;
+    }
+
+    #intro.show {
+      display: flex;
+    }
+
+    #intro video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #intro .intro-skip {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      padding: 8px 18px;
+      background: rgba(4, 7, 10, .55);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: .12em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    #intro .intro-skip:hover {
+      background: var(--accent);
+      color: #04070A;
+    }
+
+    #boot .blines {
+      width: min(620px, 86vw);
+      font-size: 13px;
+      line-height: 2.1
+    }
+
+    #boot .blines b {
+      color: var(--ink)
+    }
+
+    #boot .dim {
+      color: var(--ink-dim)
+    }
+
+    #boot .cursor {
+      color: var(--accent);
+      animation: blink 1s steps(1) infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    #boot .enter {
+      margin-top: 34px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .18em;
+      padding: 13px 30px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    #boot .enter:hover {
+      background: var(--accent);
+      color: #04070A;
+      box-shadow: 0 0 30px var(--accent-glow)
+    }
+
+    #boot .enter.show {
+      opacity: 1
+    }
+
+    /* ============================ DECK LAYOUT ============================ */
+    #deck {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: grid;
+      /* minmax(0,1fr) (not 1fr) so the middle row can't grow past the viewport to
+         fit the SVG's intrinsic height — keeps the bench/board above the fold */
+      grid-template-rows: 48px minmax(0, 1fr) 42px;
+      grid-template-columns: 206px 1fr 38%;
+      grid-template-areas:
+        "hud hud hud"
+        "modules bay sidebar"
+        "tray tray tray";
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #deck.live {
+      opacity: 1
+    }
+
+    /* ---- top HUD ---- */
+    .hud {
+      grid-area: hud;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--hairline);
+      background: linear-gradient(180deg, #0A1219, #070C11);
+    }
+
+    .sigil {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto
+    }
+
+    .sigil svg {
+      width: 24px;
+      height: 24px
+    }
+
+    .sigil .org {
+      font-size: 12px;
+      letter-spacing: .34em;
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    .sigil .org small {
+      display: block;
+      font-size: 8.5px;
+      letter-spacing: .3em;
+      color: var(--accent-2);
+      font-weight: 400;
+      margin-top: 1px
+    }
+
+    .hud .ticker {
+      flex: 1 1 auto;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-dim);
+      border-left: 1px solid var(--hairline);
+      border-right: 1px solid var(--hairline);
+      padding: 0 16px;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .hud .ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 26s linear infinite
+    }
+
+    .hud .ticker b {
+      color: var(--accent)
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translateX(-100%)
+      }
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.25;
+      flex: 0 0 auto
+    }
+
+    .stat .k {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: .22em;
+      color: var(--ink-faint)
+    }
+
+    .stat .v {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    .stat .v.accent {
+      color: var(--accent)
+    }
+
+    .sync {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 0 0 auto;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      padding: 5px 10px
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 8px var(--ok);
+      animation: pulse 2s ease infinite
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .4
+      }
+    }
+
+    .sync span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: var(--ok)
+    }
+
+    /* ---- left: capability modules ---- */
+    .modules {
+      grid-area: modules;
+      border-right: 1px solid var(--hairline);
+      background: var(--panel);
+      padding: 14px 12px;
+      overflow-y: auto;
+    }
+
+    .modules h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .26em;
+      color: var(--ink-faint);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between
+    }
+
+    .mod {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 10px;
+      margin-bottom: 7px;
+      cursor: pointer;
+      border: 1px solid var(--hairline);
+      border-left: 2px solid var(--accent-2);
+      background: linear-gradient(90deg, rgba(224, 162, 74, .06), transparent);
+      transition: .15s;
+    }
+
+    .mod:hover {
+      border-color: var(--hairline-hot);
+      transform: translateX(2px)
+    }
+
+    .mod.armed {
+      border-color: var(--accent);
+      border-left-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
+      background: linear-gradient(90deg, rgba(63, 224, 208, .10), transparent)
+    }
+
+    .mod .ic {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto
+    }
+
+    .mod .lbl {
+      flex: 1
+    }
+
+    .mod .name {
+      font-family: 'Space Grotesk';
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .02em
+    }
+
+    .mod .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      color: var(--ink-dim);
+      margin-top: 1px
+    }
+
+    .mod .qty {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    .mod.spent {
+      opacity: .32;
+      pointer-events: none;
+      filter: grayscale(.6)
+    }
+
+    .mod.locked {
+      border-left-color: var(--ink-faint);
+      cursor: not-allowed;
+      background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .015) 0 8px, transparent 8px 16px);
+    }
+
+    .mod.locked .name {
+      color: var(--ink-faint);
+      letter-spacing: .12em
+    }
+
+    .mod.locked .redact {
+      display: inline-block;
+      background: var(--ink-faint);
+      color: transparent;
+      border-radius: 1px
+    }
+
+    .mod.locked .clr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      color: var(--danger);
+      letter-spacing: .15em
+    }
+
+    /* ---- center: assembly bay ---- */
+    .bay {
+      grid-area: bay;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      padding: 18px;
+      overflow: hidden;
+      min-height: 0
+      /* keep the 1fr grid row from expanding to the SVG's intrinsic height
+         (otherwise the bench/board overflow below the fold) */
+    }
+
+    .bay .scene-glow {
+      position: absolute;
+      width: 80%;
+      height: 60%;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, var(--copper-glow), transparent);
+      opacity: .5;
+      filter: blur(40px);
+      pointer-events: none
+    }
+
+    .directive-card {
+      position: relative;
+      z-index: 2;
+      width: min(560px, 92%);
+      border: 1px solid var(--hairline);
+      border-top: 2px solid var(--accent);
+      background: linear-gradient(180deg, rgba(11, 21, 29, .92), rgba(8, 14, 20, .92));
+      padding: 14px 18px;
+      backdrop-filter: blur(2px);
+      /* fixed reserved height (label + title only) so the bench/scene never resize between levels */
+      min-height: 84px;
+    }
+
+    .directive-card .eyebrow {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      letter-spacing: .24em;
+      color: var(--accent)
+    }
+
+    .directive-card h1 {
+      font-family: 'Space Grotesk';
+      font-size: 17px;
+      font-weight: 700;
+      margin: 6px 0 5px;
+      letter-spacing: .01em
+    }
+
+    .directive-card p {
+      display: none;
+      /* directive body hidden — instructions live in the bottom bench hints instead */
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+      max-width: 48ch
+    }
+
+    .directive-card p em {
+      color: var(--accent-2);
+      font-style: normal
+    }
+
+    /* deploy bar */
+    .deploy-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .18em;
+      font-size: 11px;
+      border: 1px solid var(--hairline-hot);
+      background: transparent;
+      color: var(--ink-dim);
+      padding: 11px 18px;
+      cursor: pointer;
+      transition: .18s
+    }
+
+    .btn:hover {
+      color: var(--ink);
+      border-color: var(--ink)
+    }
+
+    .btn.primary {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .btn.primary:hover {
+      background: var(--accent);
+      color: #04070A;
+      box-shadow: 0 0 26px var(--accent-glow)
+    }
+
+    .btn:disabled {
+      opacity: .3;
+      cursor: not-allowed
+    }
+
+    /* ---- right sidebar: field code + field feed ---- */
+    .sidebar {
+      grid-area: sidebar;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--hairline);
+      background: var(--panel-2)
+    }
+
+    .pane {
+      display: flex;
+      flex-direction: column;
+      min-height: 0
+    }
+
+    .pane.code {
+      flex: 0 0 42%;
+      border-bottom: 1px solid var(--hairline)
+    }
+
+    .pane.feed {
+      flex: 1 1 auto
+    }
+
+    .pane-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-bottom: 1px solid var(--hairline)
+    }
+
+    .pane-head .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .22em;
+      color: var(--ink-dim)
+    }
+
+    .pane-head .tag b {
+      color: var(--accent)
+    }
+
+    .pane-head .spacer {
+      flex: 1
+    }
+
+    .pane-head .live-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: .18em;
+      color: var(--ok);
+      border: 1px solid rgba(91, 232, 181, .4);
+      padding: 2px 7px;
+      border-radius: 2px
+    }
+
+    .code-body {
+      flex: 1;
+      overflow: auto;
+      padding: 12px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      background: #070C11
+    }
+
+    .code-body .ln {
+      color: var(--ink-faint);
+      user-select: none;
+      display: inline-block;
+      width: 22px
+    }
+
+    .code-body .kw {
+      color: var(--accent)
+    }
+
+    .code-body .num {
+      color: var(--accent-2)
+    }
+
+    .code-body .cm {
+      color: var(--ink-faint)
+    }
+
+    .code-body .fn {
+      color: #9fd4ff
+    }
+
+    .feed-body {
+      flex: 1;
+      position: relative;
+      background: #020405;
+      overflow: hidden
+    }
+
+    #fieldCanvas {
+      width: 100%;
+      height: 100%;
+      display: block
+    }
+
+    .feed-body .scan {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .0) 0 2px, rgba(0, 0, 0, .18) 2px 4px)
+    }
+
+    .feed-body .osd {
+      position: absolute;
+      left: 10px;
+      top: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      letter-spacing: .1em;
+      text-shadow: 0 0 6px var(--accent-glow)
+    }
+
+    .feed-body .osd .rec {
+      color: var(--danger)
+    }
+
+    .feed-body .osd2 {
+      position: absolute;
+      right: 10px;
+      bottom: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-dim);
+      text-align: right;
+      line-height: 1.6
+    }
+
+    .feed-body .telem {
+      position: absolute;
+      left: 10px;
+      bottom: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--ink-dim);
+      line-height: 1.6
+    }
+
+    .feed-body .telem b {
+      color: var(--accent)
+    }
+
+    /* ---- bottom tray ---- */
+    .tray {
+      grid-area: tray;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      border-top: 1px solid var(--hairline);
+      background: #070C11
+    }
+
+    .tray .left {
+      display: flex;
+      gap: 8px
+    }
+
+    .tray .spacer {
+      flex: 1
+    }
+
+    .tray button {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .16em;
+      background: transparent;
+      border: 1px solid var(--hairline);
+      color: var(--ink-dim);
+      padding: 7px 12px;
+      cursor: pointer;
+      transition: .15s
+    }
+
+    .tray button:hover {
+      color: var(--ink);
+      border-color: var(--hairline-hot)
+    }
+
+    .tray .deploy-cta {
+      border-color: var(--accent-2);
+      color: var(--accent-2)
+    }
+
+    .tray .deploy-cta:hover {
+      background: var(--accent-2);
+      color: #04070A
+    }
+
+    /* ---- toast / debrief overlay ---- */
+    #debrief {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2, 5, 8, .86);
+      backdrop-filter: blur(4px)
+    }
+
+    #debrief.show {
+      display: flex;
+      animation: fade .4s ease
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .debrief-card {
+      width: min(480px, 90%);
+      border: 1px solid var(--accent);
+      border-top: 3px solid var(--accent);
+      background: var(--panel);
+      padding: 26px 28px;
+      box-shadow: 0 0 60px var(--accent-glow)
+    }
+
+    .debrief-card .stamp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .3em;
+      color: var(--ok)
+    }
+
+    .debrief-card h2 {
+      font-family: 'Space Grotesk';
+      font-size: 22px;
+      font-weight: 700;
+      margin: 8px 0 14px
+    }
+
+    .debrief-card .reward {
+      border: 1px solid var(--hairline);
+      padding: 12px 14px;
+      margin: 14px 0;
+      background: rgba(63, 224, 208, .04)
+    }
+
+    .debrief-card .reward .rk {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      letter-spacing: .2em;
+      color: var(--accent)
+    }
+
+    .debrief-card .reward .rv {
+      font-size: 13px;
+      color: var(--ink);
+      margin-top: 5px;
+      line-height: 1.5
+    }
+
+    .debrief-card p {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      line-height: 1.6
+    }
+
+    #debrief .next {
+      width: 100%;
+      margin-top: 18px
+    }
+
+    .fault-msg {
+      position: fixed;
+      left: 50%;
+      bottom: 62px;
+      transform: translateX(-50%);
+      z-index: 55;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      background: rgba(20, 6, 6, .92);
+      padding: 10px 18px;
+      display: none;
+      box-shadow: 0 0 24px rgba(255, 90, 77, .3)
+    }
+
+    .fault-msg.show {
+      display: block;
+      animation: shake .4s
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(-50%)
+      }
+
+      25% {
+        transform: translateX(-52%)
+      }
+
+      75% {
+        transform: translateX(-48%)
+      }
+    }
+
+    /* ---- responsive: stack the three columns + allow scroll on phones/small tablets ---- */
+    @media (max-width: 900px) {
+      body {
+        overflow: auto
+      }
+
+      #deck {
+        height: auto;
+        min-height: 100%;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "hud"
+          "bay"
+          "modules"
+          "sidebar"
+          "tray";
+      }
+
+      .hud {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        padding: 8px 12px
+      }
+
+      .hud .ticker {
+        order: 5;
+        flex-basis: 100%;
+        border-left: 0;
+        border-right: 0;
+        padding: 0
+      }
+
+      .modules {
+        border-right: 0;
+        border-bottom: 1px solid var(--hairline)
+      }
+
+      .bay {
+        padding: 22px 14px
+      }
+
+      .sidebar {
+        border-left: 0;
+        border-top: 1px solid var(--hairline)
+      }
+
+      .pane.code {
+        flex: 0 0 auto
+      }
+
+      .feed-body {
+        height: 46vw;
+        min-height: 220px
+      }
+
+      .tray {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 12px;
+        gap: 8px
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        animation-duration: .001s !important
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--hairline-hot)
+    }
+
+    :focus-visible {
+      outline: 1px solid var(--accent);
+      outline-offset: 2px
+    }
+
+    /* ---- wiring bench (sector 02) ---- */
+    .bench-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: min(840px, 98%);
+      margin: 8px auto 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      color: var(--ink-dim);
+      text-transform: uppercase
+    }
+
+    .bench-label b {
+      color: var(--accent)
+    }
+
+    .wb-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      width: 100%;
+      z-index: 2
+    }
+
+    .wb-scene {
+      width: 100%;
+      height: 100%;
+      max-height: 56vh
+    }
+
+    .wb-node {
+      cursor: pointer
+    }
+
+    .wb-hit {
+      fill: transparent
+    }
+
+    .wb-pad {
+      fill: var(--accent-2);
+      stroke: #7a5e25;
+      stroke-width: 1.2;
+      transition: all .12s
+    }
+
+    .wb-node:hover .wb-pad {
+      stroke: var(--accent);
+      stroke-width: 2
+    }
+
+    .wb-node.sel .wb-pad {
+      fill: var(--accent);
+      stroke: #eafff7;
+      stroke-width: 2
+    }
+
+    .wb-node.sel .wb-ring {
+      opacity: 1
+    }
+
+    .wb-ring {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: wbpulse 1.1s ease-out infinite
+    }
+
+    @keyframes wbpulse {
+      from {
+        r: 11.25;
+        opacity: .9
+      }
+
+      to {
+        r: 22.5;
+        opacity: 0
+      }
+    }
+
+    #scene.learned .wb-node .wb-ring {
+      animation: none;
+      opacity: 0
+    }
+
+    .wb-wire {
+      fill: none;
+      stroke-width: 4;
+      stroke-linecap: round;
+      cursor: pointer
+    }
+
+    .wb-wire:hover {
+      stroke-width: 6
+    }
+
+    .wb-plabel {
+      fill: #9fc4b6;
+      font: 9px 'JetBrains Mono', monospace
+    }
+
+    /* board pin labels (GND, 13, 8, 2 ...) — 1.25x larger than other part labels */
+    .wb-plabel.pin {
+      font-size: 11.25px
+    }
+
+    .wb-pol {
+      font: bold 11px 'JetBrains Mono', monospace
+    }
+
+    .wb-cap {
+      cursor: pointer
+    }
+
+    .wb-scene .silk {
+      fill: #dfeee9;
+      font: bold 13px 'JetBrains Mono', monospace;
+      letter-spacing: .1em
+    }
+
+    .wb-scene .silk.dim {
+      fill: #7fae9b;
+      font: 9px 'JetBrains Mono', monospace
+    }
+
+    .bench-msg {
+      width: min(840px, 98%);
+      margin: 6px auto 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      white-space: pre-line;
+      /* reserve a steady 3 lines so the bench/scene don't resize as hints change */
+      min-height: 50px;
+      max-height: 50px;
+      overflow: hidden
+    }
+
+    .mod[draggable=true] {
+      cursor: grab
+    }

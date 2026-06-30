@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE ARCHIVE // SECTOR 02 — ELECTRONICS</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+  <!-- ===================== JACK-IN BOOT ===================== -->
+  <div id="boot">
+    <div class="blines" id="blines"></div>
+    <button class="enter" id="enterBtn">↳ SYNC NEURAL LINK</button>
+  </div>
+
+  <!-- ===================== INTRO CINEMATIC ===================== -->
+  <div id="intro">
+    <video id="introVideo" playsinline preload="auto"></video>
+    <button class="intro-skip" id="introSkip">SKIP ▸</button>
+  </div>
+
+  <!-- ===================== DECK ===================== -->
+  <div id="deck">
+
+    <!-- HUD -->
+    <header class="hud">
+      <div class="sigil">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6l-9-4Z" stroke="var(--accent)" stroke-width="1.2" />
+          <path d="M12 7v10M8 10l4 3 4-3" stroke="var(--accent-2)" stroke-width="1.1" />
+        </svg>
+        <div class="org">THE ARCHIVE<small>CONTINUITY DIVISION</small></div>
+      </div>
+      <div class="ticker"><span><b>// SECTOR 02 ONLINE.</b> Temporal drift detected at node 1247-CE-MUTRAH. Anchor unit
+          MN-04 awaiting field code. <b>// KNOWLEDGE IS THE ONLY WEAPON.</b> 1,204 operators currently synced. <b>//
+          </b>Recovered technique unlocked: closed-loop conduction. Do not break the timeline.</span></div>
+      <div class="stat"><span class="k">OPERATOR</span><span class="v">FOUED·EK</span></div>
+      <div class="stat"><span class="k">CLEARANCE</span><span class="v accent">LVL 2</span></div>
+      <div class="stat"><span class="k">INTEGRITY</span><span class="v" id="integrity">— %</span></div>
+      <div class="sync"><span class="dot"></span><span>UPLINK STABLE</span></div>
+    </header>
+
+    <!-- LEFT: capability modules -->
+    <aside class="modules">
+      <h2><span>CAPABILITY MODULES</span><span>CL2</span></h2>
+      <div id="modList"></div>
+      <h2 style="margin-top:18px"><span>RESTRICTED</span></h2>
+      <div class="mod locked"><svg class="ic" viewBox="0 0 24 24">
+          <rect x="5" y="10" width="14" height="9" rx="1" stroke="var(--ink-faint)" fill="none" />
+          <path d="M8 10V7a4 4 0 018 0v3" stroke="var(--ink-faint)" fill="none" />
+        </svg>
+        <div class="lbl">
+          <div class="name"><span class="redact">TRANSISTOR</span></div>
+          <div class="clr">CLEARANCE LVL 4 REQ.</div>
+        </div>
+      </div>
+      <div class="mod locked"><svg class="ic" viewBox="0 0 24 24">
+          <rect x="5" y="10" width="14" height="9" rx="1" stroke="var(--ink-faint)" fill="none" />
+          <path d="M8 10V7a4 4 0 018 0v3" stroke="var(--ink-faint)" fill="none" />
+        </svg>
+        <div class="lbl">
+          <div class="name"><span class="redact">MICROCONTROLLER</span></div>
+          <div class="clr">CLEARANCE LVL 5 REQ.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER: assembly bay -->
+    <main class="bay">
+      <div class="scene-glow"></div>
+      <div class="directive-card">
+        <div class="eyebrow"><span>DIRECTIVE 02 — ENCRYPTED DOSSIER</span></div>
+        <h1 id="dirTitle">Restore the Watchtower Beacon</h1>
+        <p id="dirBody"></p>
+      </div>
+      <div class="bench-label"><span>FIELD BENCH // <b id="benchHint">drag parts in from the left</b></span><span
+          id="loopState">LOOP: OPEN</span></div>
+      <div class="wb-wrap">
+        <!-- viewBox zoomed 1.25x (760/1.25=608, 520/1.25=416) so parts + labels render larger;
+             window framed to keep every component, pad and the ARDUINO silk in view. -->
+        <svg id="scene" class="wb-scene" viewBox="40 34 608 416" preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="redOn" cx="50%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#ff9a8a" />
+              <stop offset="55%" stop-color="#e23b2b" />
+              <stop offset="100%" stop-color="#8c1d12" />
+            </radialGradient>
+            <radialGradient id="redOff" cx="50%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#7d2a22" />
+              <stop offset="100%" stop-color="#451310" />
+            </radialGradient>
+            <radialGradient id="grnOn" cx="50%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#b6ffcf" />
+              <stop offset="55%" stop-color="#26d06a" />
+              <stop offset="100%" stop-color="#0c5a2c" />
+            </radialGradient>
+            <radialGradient id="grnOff" cx="50%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#1f5238" />
+              <stop offset="100%" stop-color="#0c281a" />
+            </radialGradient>
+            <filter id="wbhot" x="-90%" y="-90%" width="280%" height="280%">
+              <feGaussianBlur stdDeviation="6" />
+            </filter>
+          </defs>
+          <!-- The Arduino Nano board (body, USB, MCU, silkscreen, all 30 pin
+               holes + labels, on-board "L" LED) is drawn in app.js -> drawBoard()
+               so the pinout stays data-driven and the live pads line up exactly. -->
+          <g id="board"></g>
+          <g id="wireLayer"></g>
+          <g id="partLayer"></g>
+          <g id="nodeLayer"></g>
+        </svg>
+      </div>
+      <div class="bench-msg" id="benchMsg"></div>
+      <div class="deploy-bar">
+        <button class="btn" id="clearBtn">↺ RESET BENCH</button>
+        <button class="btn primary" id="deployBtn">▶ DEPLOY TO MN-04</button>
+      </div>
+    </main>
+
+    <!-- RIGHT: code + feed -->
+    <section class="sidebar">
+      <div class="pane code">
+        <div class="pane-head"><span class="tag">FIELD CODE // <b>FIRMWARE.NET</b></span><span
+            class="spacer"></span><span class="live-pill">AUTO-COMPILED</span></div>
+        <div class="code-body" id="codeBody"></div>
+      </div>
+      <div class="pane feed">
+        <div class="pane-head"><span class="tag">FIELD FEED // <b>ANCHOR MN-04</b></span><span
+            class="spacer"></span><span class="live-pill" id="feedState">STANDBY</span></div>
+        <div class="feed-body">
+          <canvas id="fieldCanvas"></canvas>
+          <div class="scan"></div>
+          <div class="osd"><span class="rec">● REC</span> &nbsp;1247 CE · MUTRAH</div>
+          <div class="telem" id="telem">I = 0.000 A<br>BEACON: OFFLINE</div>
+          <div class="osd2">LAT —— · LON ——<br>SIG ████░ 78%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAY -->
+    <footer class="tray">
+      <div class="left">
+        <button id="syncBtn">⌁ NEURAL SYNC</button>
+        <button id="loreBtn">⎙ DOSSIER</button>
+      </div>
+      <div class="spacer"></div>
+      <button id="soundBtn">♪ AMBIENT: ON</button>
+      <button class="deploy-cta" id="deployBtn2">↑ UPLINK FIELD CODE</button>
+    </footer>
+  </div>
+
+  <!-- debrief -->
+  <div id="debrief">
+    <div class="debrief-card">
+      <div class="stamp">▒ ANOMALY STABILIZED ▒</div>
+      <h2 id="debriefTitle">Timeline Integrity Restored</h2>
+      <p id="debriefBody"></p>
+      <div class="reward">
+        <div class="rk">RECOVERED KNOWLEDGE</div>
+        <div class="rv" id="debriefKnow"></div>
+      </div>
+      <div class="reward">
+        <div class="rk">CLEARANCE GAINED</div>
+        <div class="rv" id="debriefReward"></div>
+      </div>
+      <button class="btn primary next" id="nextBtn">▶ ADVANCE TO NEXT DIRECTIVE</button>
+    </div>
+  </div>
+
+  <div class="fault-msg" id="faultMsg"></div>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <!-- avr8js AVR emulator (vendored library) — must load before app.js -->
+  <script src="js/avr8js.min.js"></script>
+  <!-- real ATmega328P firmware (avr-gcc compiled) + sketch source — generated by firmware/build_fw.js -->
+  <script src="js/firmware.js"></script>
+  <!-- Sector 02 wiring-trials game engine -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
