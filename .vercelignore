@@ -1,0 +1,7 @@
+AnyDesk*.exe
+*.conf.lock
+build/
+firmware/
+screenshots/
+test/
+tools/

@@ -14,3 +14,5 @@ AnyDesk*.exe
 # OS / editor junk
 Thumbs.db
 .DS_Store
+
+.vercel
